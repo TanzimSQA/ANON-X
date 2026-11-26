@@ -1,0 +1,16 @@
+[Unit]
+Description=ANON-X Privileged D-Bus & Polkit Service
+After=dbus.service polkit.service
+Requires=dbus.service
+
+[Service]
+Type=dbus
+BusName=org.anonx.Manager
+ExecStart=/usr/bin/python3 -m privileged.dbus_service
+Restart=on-failure
+RestartSec=5
+PrivateTmp=true
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

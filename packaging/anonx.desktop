@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ANON-X Privacy Center
+GenericName=Tor & Network Privacy Protection
+Comment=Manage Tor routing, nftables fail-closed firewall, DNS & IPv6 protection
+Exec=/usr/local/bin/anonx-gui
+Icon=anonx
+Terminal=false
+Type=Application
+Categories=System;Security;Network;
+Keywords=tor;privacy;firewall;nftables;kali;anon;
+StartupNotify=true

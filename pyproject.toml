@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anonx"
+version = "1.0.0"
+description = "ANON-X — Advanced Kali Linux Privacy & Tor Protection System"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Tanzim Rahman", email = "tanzimsqa@users.noreply.github.com" }
+]
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+gui = [
+    "PySide6>=6.6",
+]
+dbus = [
+    "dbus-python>=1.3.2",
+    "PyGObject>=3.44",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+anonctl = "anonx.cli:main"
+anonx-gui = "gui.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["anonx*", "gui*", "privileged*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

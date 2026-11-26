@@ -1,0 +1,8 @@
+// Optional Polkit rule allowing active sudo-group members to manage ANON-X without repeated prompts
+polkit.addRule(function(action, subject) {
+    if (action.id === "org.anonx.Manager.manage" &&
+        subject.isInGroup("sudo") &&
+        subject.active) {
+        return polkit.Result.AUTH_ADMIN_KEEP;
+    }
+});

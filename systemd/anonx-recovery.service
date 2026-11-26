@@ -1,0 +1,12 @@
+[Unit]
+Description=ANON-X Recovery Safety Net
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+ExecStop=/usr/bin/python3 -c "from anonx.core import AnonXCore; AnonXCore().recovery.recover('systemd-shutdown')"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/polkit/1/policyconfig.dtd">
+<policyconfig>
+  <vendor>ANON-X Privacy Project</vendor>
+  <action id="org.anonx.Manager.manage">
+    <description>Manage ANON-X privacy protection, firewall, and Tor state</description>
+    <message>Administrator authentication is required to modify ANON-X network protection.</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+</policyconfig>

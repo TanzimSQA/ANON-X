@@ -1,0 +1,16 @@
+[Unit]
+Description=ANON-X Early Fail-Closed Firewall Protection
+DefaultDependencies=no
+After=local-fs.target network-pre.target
+Before=network-online.target tor.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/python3 -c "from anonx.core import AnonXCore; c = AnonXCore(); c.recovery.capture_snapshot('boot'); c.firewall.apply(fail_closed_only=True); c.ipv6.apply_sysctl_protection()"
+ExecStop=/usr/bin/python3 -c "from anonx.core import AnonXCore; AnonXCore().recovery.recover('firewall-unit-stop')"
+ProtectSystem=strict
+ReadWritePaths=/var/lib/anonx /var/log/anonx /run/anonx
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+# Example user override configuration for ANON-X
+# Copy to /etc/anonx/config.yaml and adjust carefully.
+
+general:
+  log_level: "INFO"
+
+firewall:
+  # Set allow_lan: true ONLY if you explicitly need local LAN device access.
+  # Warning: LAN traffic is not routed through Tor and can expose local metadata.
+  allow_lan: false
+  fail_closed: true
+  block_unsupported_udp: true
+
+ipv6:
+  # Enforce strict IPv6 egress blocking unless verified Tor IPv6 routing is configured.
+  policy: "block_egress"
+  disable_sysctl_ipv6: true
+
+gui:
+  theme: "dark"
+  minimize_to_tray: true
+  notifications_enabled: true

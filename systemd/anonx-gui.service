@@ -1,0 +1,11 @@
+[Unit]
+Description=ANON-X Privacy Center GUI (User Session)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/anonx-gui
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

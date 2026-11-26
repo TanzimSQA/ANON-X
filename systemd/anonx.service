@@ -1,0 +1,17 @@
+[Unit]
+Description=ANON-X Background Privacy & Tor Protection Daemon
+After=anonx-firewall.service network-online.target
+Wants=network-online.target anonx-firewall.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -m anonx.service
+ExecStop=/usr/bin/python3 -c "from anonx.core import AnonXCore; AnonXCore().stop_protection()"
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=false
+PrivateTmp=true
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

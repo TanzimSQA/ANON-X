@@ -1,0 +1,71 @@
+# ANON-X Default Configuration
+# Protected root-owned configuration: /etc/anonx/config.yaml
+
+general:
+  app_name: "ANON-X"
+  version: "1.0.0"
+  log_level: "INFO"
+  log_dir: "/var/log/anonx"
+  state_dir: "/var/lib/anonx"
+  backup_dir: "/var/lib/anonx/backups"
+  run_dir: "/run/anonx"
+
+tor:
+  service_name: "tor"
+  user: "debian-tor"
+  torrc_path: "/etc/tor/torrc"
+  torrc_dropin: "/etc/tor/torrc.d/99-anonx.conf"
+  trans_port: 9040
+  dns_port: 5353
+  socks_port: 9050
+  control_port: 9051
+  cookie_auth_file: "/run/tor/control.authcookie"
+  virtual_addr_network: "10.192.0.0/10"
+  bootstrap_timeout_sec: 90
+  health_check_interval_sec: 15
+
+firewall:
+  backend: "nftables"
+  table_name: "anonx_filter"
+  nat_table_name: "anonx_nat"
+  fail_closed: true
+  block_unsupported_udp: true
+  allow_dhcp: true
+  allow_lan: false
+  lan_cidrs:
+    - "10.0.0.0/8"
+    - "172.16.0.0/12"
+    - "192.168.0.0/16"
+  preserve_docker: true
+  preserve_ufw: true
+
+dns:
+  intercept_port53: true
+  block_external_dns: true
+  manage_resolv_conf: false
+  check_systemd_resolved: true
+  check_network_manager: true
+
+ipv6:
+  policy: "block_egress"
+  disable_sysctl_ipv6: true
+  block_ipv6_dns: true
+
+startup:
+  enable_boot_protection: true
+  retry_interval_sec: 10
+  max_bootstrap_retries: 6
+  gui_autostart: false
+
+gui:
+  theme: "dark"
+  minimize_to_tray: true
+  notifications_enabled: true
+  refresh_interval_ms: 3000
+
+hardening:
+  warn_browser_fingerprinting: true
+  warn_vpn_conflicts: true
+  warn_torrent_over_tor: true
+  auto_mac_spoof: false
+  auto_wipe_logs: false
