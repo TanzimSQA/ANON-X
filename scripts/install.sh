@@ -27,7 +27,7 @@ echo "=== [2/8] Installing System Dependencies ==="
 apt-get update -qq
 apt-get install -y --no-install-recommends \
   python3 python3-pip python3-yaml python3-pyside6.qtwidgets python3-pyside6.qtcore python3-pyside6.qtgui \
-  python3-dbus python3-gi tor nftables policykit-1 libnotify-bin
+  python3-dbus python3-gi tor nftables polkitd pkexec libnotify-bin
 
 echo "=== [3/8] Creating Protected Directories ==="
 mkdir -p /etc/anonx /var/log/anonx /var/lib/anonx/backups /run/anonx "${INSTALL_DIR}"

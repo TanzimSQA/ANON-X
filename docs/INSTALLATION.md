@@ -24,7 +24,7 @@ If you are developing on Windows (`D:\tools\anon`) and targeting a Kali Linux VM
 
 ## What `install.sh` Does
 1. Verifies OS and `systemd` availability.
-2. Installs required packages via `apt-get` (`python3`, `python3-yaml`, `python3-pyside6.*`, `python3-dbus`, `python3-gi`, `tor`, `nftables`, `policykit-1`, `libnotify-bin`).
+2. Installs required packages via `apt-get` (`python3`, `python3-yaml`, `python3-pyside6.*`, `python3-dbus`, `python3-gi`, `tor`, `nftables`, `polkitd`, `pkexec`, `libnotify-bin`).
 3. Creates protected directories (`/etc/anonx`, `/var/log/anonx`, `/var/lib/anonx/backups`).
 4. Installs `/opt/anonx`, `/usr/local/bin/anonctl`, and `/usr/local/bin/anonx-gui`.
 5. Installs Polkit policy (`org.anonx.Manager.policy`), D-Bus system bus config, and systemd units.
